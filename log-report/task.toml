@@ -1,4 +1,5 @@
-artifacts = "/app/report.json"
+version = "1.0"
+artifacts = ["/app/report.json"]
 
 [task]
 name = "dynamo/log-report"
@@ -14,7 +15,7 @@ model_tested = "GPT-5.4"
 agent_tested = "Terminus-2"
 difficulty_explanation = "Parse a small access log and emit summary stats."
 solution_explanation = "Read the log, count requests/unique IPs, find the top path."
-verification_explanation = "Check the report file."
+verification_explanation = "Check report.json has the correct total_requests, unique_ips, and top_path."
 
 [verifier]
 timeout_sec = 120.0
@@ -28,5 +29,5 @@ cpus = 1
 memory_mb = 2048
 storage_mb = 10240
 gpus = 0
-allow_internet = true
+network_mode = "no-network"
 mcp_servers = []
